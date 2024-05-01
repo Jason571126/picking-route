@@ -30,7 +30,7 @@ from utils.results.plot import (
 	plot_simulation2
 )
 import streamlit as st
-from streamlit import caching
+#from streamlit import caching
 
 # Set page configuration
 st.set_page_config(page_title ="Improve Warehouse Productivity using Order Batching",
@@ -69,7 +69,7 @@ st.header("**🥇 Impact of the wave size in orders (Orders/Wave) **")
 st.subheader('''
         🛠️ HOW MANY ORDER LINES DO YOU WANT TO INCLUDE IN YOUR ANALYSIS?
     ''')
-col1, col2 = st.beta_columns(2)
+col1, col2 = st.columns(2)
 with col1:
 	n = st.slider(
 				'SIMULATION 1 SCOPE (THOUSDAND ORDERS)', 1, 200 , value = 5)
@@ -80,13 +80,13 @@ with col2:
 # SIMULATION PARAMETERS
 st.subheader('''
         🛠️ SIMULATE ORDER PICKING BY WAVE OF N ORDERS PER WAVE WITH N IN [N_MIN, N_MAX] ''')
-col_11 , col_22 = st.beta_columns(2)
-with col_11:
+col1, col2 = st.columns(2)
+with col1:
 	n1 = st.slider(
 				'SIMULATION 1: N_MIN (ORDERS/WAVE)', 0, 20 , value = 1)
 	n2 = st.slider(
 				'SIMULATION 1: N_MAX (ORDERS/WAVE)', n1 + 1, 20 , value = int(np.max([n1+1 , 10])))
-with col_22:
+with col2:
 		st.write('''[N_MIN, N_MAX] = [{:,}, {:,}]'''.format(n1, n2))
 # START CALCULATION
 start_1= False
@@ -104,7 +104,7 @@ st.header("**🥈 Impact of the order batching method **")
 st.subheader('''
         🛠️ HOW MANY ORDER LINES DO YOU WANT TO INCLUDE IN YOUR ANALYSIS?
     ''')
-col1, col2 = st.beta_columns(2)
+col1, col2 = st.columns(2)
 with col1:
 	n_ = st.slider(
 				'SIMULATION 2 SCOPE (THOUSDAND ORDERS)', 1, 200 , value = 5)
